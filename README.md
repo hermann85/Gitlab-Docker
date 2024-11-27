@@ -1,6 +1,6 @@
 # Gitlab-Docker
 
-# Installation / Configuration et Tests CICD
+# Installation / Configuration et Tests CICD de GitLab
    - www.n-services.net
    - NEWTON SERVICES
    - http://xxxxxxxxxxxx:9080
