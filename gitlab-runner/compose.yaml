@@ -1,0 +1,19 @@
+services:
+  gitlab-runner:
+    image: gitlab/gitlab-runner:bleeding
+    container_name: gitlab-runner
+    restart: always
+    hostname: runner.hermann.hdb
+    volumes:
+      - ./configs/config.toml:/etc/gitlab-runner/config.toml
+      - ./data/gitlab-runner:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+    shm_size: '256m'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    networks:
+      - applications-networks
+networks:
+  applications-networks:
+    name: applications-networks
+    external: true

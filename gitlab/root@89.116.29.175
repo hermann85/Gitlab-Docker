@@ -1,0 +1,26 @@
+services:
+  gitlab-ce:
+    container_name: gitlab-ce
+    image: gitlab/gitlab-ce:16.7.9-ce.0
+    restart: always
+    hostname: 'gitlab.hdb.fr'
+    ports:
+      - 80:80 # port web (http)
+      - 443:443 # port sécurisé (https)
+      - 22:22  # connexion ssh
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.hdb.fr'
+    volumes:
+      - './gitlab-data/config:/etc/gitlab'
+      - './gitlab-data/logs:/var/log/gitlab'
+      - './gitlab-data/data:/var/opt/gitlab'
+    networks:
+      - applications-networks
+    shm_size: '256m'
+    extra_host:
+      - 'host.docker.internal:host-gateway'
+networks:
+  applications-networks:
+    name: applications-networks
+    external: true
