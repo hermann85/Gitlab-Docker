@@ -3,7 +3,7 @@
 # Installation / Configuration et Tests CICD
    - www.n-services.net
    - NEWTON SERVICES
-   - http://89.116.29.175:9080
+   - http://xxxxxxxxxxxx:9080
 #
 
 # Installation / Configuration
@@ -16,7 +16,7 @@
 
 3- Création des repertoires :
    - Gitlab : compose.yaml
-     * scp compose.yaml root@89.116.29.175:/tmp
+     * scp compose.yaml root@xxxxxxxxx:/tmp
      * mkdir -p /opt/outils/gitlab
      * mv /tmp/compose.yaml/ opt/outils/gitlab
      * cd /opt/outils/gitlab
@@ -31,7 +31,7 @@
      * cat /etc/gitlab/initial_root_password
  
    - Gitlab-runner : compose.yaml
-     * scp compose.yaml root@89.116.29.175:/tmp
+     * scp compose.yaml root@xxxxxxxx:/tmp
      * cd /opt/outils
      * mkdir gitlab-runner
      * cd gitlab-runner
@@ -51,7 +51,7 @@
    * mkdir configs
    * docker exec -it gitlab-ce cat /etc/gitlab/gitlab.rb > configs/gitlab.rb
    * vim configs/gitlab.rb
-   * external_url = ‘http :89.116.29.175 :9080’
+   * external_url = ‘http :xxxxxxxxx :9080’
    * nginx[‘liseten_port’] = 9080
    * dans compose.yaml rajouter dans volume :  - './configs/* * gitlab.rb:/etc/gitlab/gitlab.rb'
    * ensuite docker compose stop docker compose rm -f
